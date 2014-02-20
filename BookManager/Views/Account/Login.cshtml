@@ -1,0 +1,67 @@
+﻿@model BookManager.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "ink-form", role = "form" }))
+            {
+                if (Html.ValidationSummary(true) != null)
+                {
+                    <div class="ink-alert basic error">
+                        @Html.ValidationSummary(true)
+                    </div>
+                }
+                <div class="ink-alert basic warning" id="error-container">
+                    <p>
+                        @Html.ValidationMessageFor(m => m.Password)
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </p>
+                </div>
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+                    <div class="control-group column-group gutters">
+                        @Html.LabelFor(m => m.UserName, new { @class = "large-20 content-right" })
+                        <div class="large-20 content-right">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="control-group column-group gutters">
+                        @Html.LabelFor(m => m.Password, new { @class = "large-20 content-right" })
+                        <div class="large-20 content-right">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+                    <div class="control-group column-group gutters">
+                        <div class="large-20 content-right">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+
+                        </div>
+                        <div class="large-80 content-right">
+                            <div class="checkbox">
+                                <input type="submit" value="Log in" class="ink-button pull-right" />
+                            </div>
+
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,8 @@
+Web.config
+App_Data/*
+.suo
+.sln
+packages/
+bin/
+thumbs.db
+SCSS/*.css

@@ -1,0 +1,150 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Duru+Sans);
+
+body {
+	font-family: 'Duru Sans', sans-serif;
+	background-image: url('../img/bg.png'); //relative to SCSS root
+	-webkit-font-smoothing: antialiased;
+	 text-shadow: 0px 0px 1px rgba(128,128,128,0.01); 
+	 -webkit-text-stroke: 1px transparent;
+}
+
+* {
+	
+}
+
+html {
+    overflow-y: scroll;
+}
+
+.nav-bar {
+	background: linear-gradient(to bottom, rgb(27, 117, 206) 0px, rgb(21, 91, 161) 150%) repeat scroll 0% 0% transparent;
+	position: fixed;
+	width: 100%;
+	border-bottom: 1px solid #999;
+	z-index: 999;
+	top: 0px;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+.field-validation-error {
+	display: block;
+}
+
+#error-container {
+	display: none;
+}
+
+.ink-form .control-group {
+	margin-bottom: 0px;
+}
+
+#cp-errors {
+	padding: 0px;
+}
+
+.validation-summary-errors {
+	padding: 1em;
+}
+
+#image-feature {
+    background-image: url('../img/books.jpg');
+	width: 100%;
+	height: 419px;
+
+}
+
+#feature-content {
+	background-color: rgba(0,0,0,0.3);
+	border-radius: 3px;
+	padding: 20px;
+	color: #fff !important;
+}
+
+
+#feature-content > h2 {
+	color: #eee;
+}
+
+#feature-outer {
+	position: relative;
+	top: 100px;
+}
+
+.feature-block {
+	background-color: #ddd;
+	border-radius: 3px;
+	border: 1px solid #999;
+	padding: 5px;
+}
+
+.feature-block > h4 {
+    text-align: center;
+	text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.1);
+}
+
+#content {
+    margin-top: 3.6em;
+}
+
+.get-started {
+	text-align: center;
+}
+
+#breadcrumbs {
+	position: relative;
+	top: -17px;
+	margin-bottom: -5px;
+
+}
+
+#breadcrumbs > ul {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#brand {
+	display: none;
+}
+
+@media (min-width: 1280px) {
+	#brand {
+		margin-left: 300px - 85px;
+		width: 200px;
+		text-align: center;
+		color: #222;
+		display: inline-block;
+	}
+
+	#brand a:hover {
+		background: none;
+	}
+
+	#brand a {
+		color: #222;
+		text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1), 0px 0px 30px rgba(255, 255, 255, 0.125);
+	}
+}
+
+@media (max-width: 600px) {
+	#rightNav {
+		float: left !important;
+	}
+
+	#content {
+		margin-top: 6.6em;
+	}
+}
+
+@media (max-width: 300px) {
+
+	#content {
+		margin-top: 8.6em;
+	}
+}

@@ -1,0 +1,46 @@
+﻿@model BookManager.Models.Book
+@{
+    ViewBag.Title = "Create book"; //Page title
+    ViewBag.PageId = "books"; //Used to show this nav item as highlighted
+}
+
+<nav class="ink-navigation" id="breadcrumbs">
+    <ul class="breadcrumbs rounded flat grey">
+        <li>@Html.ActionLink("Books", "Manage", "Books")</li>
+        <li class="active">@Html.ActionLink("Create", "Create", "Books")</li>
+    </ul>
+</nav>
+
+<h2>Create book</h2>
+<hr />
+
+@using (Html.BeginForm("Create", "Books", FormMethod.Post, new { @class = "ink-form", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="ink-alert basic error" id="cp-errors">
+        @Html.ValidationSummary()
+    </div>
+    <fieldset>
+        <div class="control-group column-group gutters">
+            @Html.LabelFor(m => m.Title, new { @class = "large-20 content-right" })
+            <div class="control large-80">
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="control-group column-group gutters">
+            @Html.LabelFor(m => m.Author, new { @class = "large-20 content-right" })
+            <div class="control large-80">
+                @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="control-group column-group gutters">
+            @Html.LabelFor(m => m.Genre, new { @class = "large-20 content-right" })
+            <div class="control large-80">
+                @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="control-group column-group gutters large-25">
+            <input type="submit" value="Create" class="ink-button pull-right" />
+        </div>
+    </fieldset>
+}

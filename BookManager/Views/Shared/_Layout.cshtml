@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BookManager</title>
+    @Styles.Render("//cdnjs.cloudflare.com/ajax/libs/ink/2.2.1/css/ink-min.css")
+    @Styles.Render("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css")
+    @Styles.Render("~/bundles/sass")
+    @Scripts.Render("//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("//cdnjs.cloudflare.com/ajax/libs/ink/2.2.1/js/ink-all.min.js")
+
+</head>
+<body>
+
+    <div class="nav-bar">
+        <nav class="ink-navigation ink-grid">
+
+            <ul class="menu blue horizontal">
+
+                <li @if (ViewBag.PageId=="home") { <text>class="active"</text> }>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li @if (ViewBag.PageId == "books") { <text> class="active" </text>  }>@Html.ActionLink("Books", "Manage", "Books")</li>
+                <li @if (ViewBag.PageId == "contact") { <text> class="active" </text>  }>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li id="brand"><a><i class="icon-book"></i> BookManager</a></li>
+                <li class="pull-right" id="rightNav">
+                    <ul>
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    @RenderSection("TopContent", false)
+    <div class="ink-grid" id="content">
+
+        <div class="column-group gutters">
+
+
+            @if (IsSectionDefined("Sidebar"))
+            {
+                <div class="large-80">@RenderBody()</div>
+            }
+            else
+            {
+                @RenderBody()
+            }
+
+            @if (IsSectionDefined("Sidebar"))
+            {
+                <div class="large-20">
+                    @RenderSection("Sidebar", false)
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

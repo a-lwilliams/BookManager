@@ -1,0 +1,41 @@
+﻿@model BookManager.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "ink-form", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="ink-alert basic error" id="cp-errors">
+        @Html.ValidationSummary()
+    </div>
+    <fieldset>
+        <div class="control-group column-group gutters">
+            @Html.LabelFor(m => m.UserName, new { @class = "large-20 content-right" })
+            <div class="control large-80">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="control-group column-group gutters">
+            @Html.LabelFor(m => m.Password, new { @class = "large-20 content-right" })
+            <div class="control large-80">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="control-group column-group gutters">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "large-20 content-right" })
+            <div class="control large-80">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="control-group column-group gutters large-25">
+            <input type="submit" value="Register" class="ink-button pull-right" />
+        </div>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

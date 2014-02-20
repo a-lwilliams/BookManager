@@ -1,0 +1,68 @@
+﻿@* Specify we need a list of books for this view *@
+@model IEnumerable<BookManager.Models.Book>
+@using BookManager.Utils;
+@{
+    ViewBag.Title = "Manage books"; //Page title
+    ViewBag.PageId = "books"; //Used to show this nav item as highlighted
+}
+
+<h2>Manage books <small>@Html.ActionLink("create", "Create", "Books")</small></h2>
+<hr />
+@if (Model.Count() == 0)
+{
+    <p>You currently have no books attached to your profile. You should @Html.ActionLink("create one", "Create", "Books")!</p>
+}
+else
+{
+    <table class="ink-table alternating">
+        <thead>
+            <tr>
+                <th class="content-left" data-sortable="true">@Html.DisplayNameFor(model => model.Title)</th>
+                <th class="content-left" data-sortable="true">@Html.DisplayNameFor(model => model.Author)</th>
+                <th class="content-left" data-sortable="true">@Html.DisplayNameFor(model => model.Genre)</th>
+                <th class="content-left"></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4">You have @Pluralization.GetPlural("book", Model.Count()) in your wishlist.</td>
+            </tr>
+        </tfoot>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a target="_blank" href="http://www.google.com/webhp#q=site:amazon.co.uk+@HttpUtility.UrlEncode(item.Title)+@HttpUtility.UrlEncode(item.Author)&btnI">@item.Title</a></td>
+                    @* A real app would use the Amazon API for this *@
+                    <td>@item.Author</td>
+                    <td>@item.Genre</td>
+                    <td><a href="#" class="delete-link" data-id="@item.ID"><i class="fa fa-trash-o"></i></a></td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+
+    foreach (var item in Model)
+    {
+        using (Html.BeginForm("Delete", "Books", FormMethod.Post, new {role = "form", id="form-" +  item.ID }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("id", item.ID) 
+        }
+    }
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        var table = new Ink.UI.Table('.ink-table');
+
+        $(".delete-link").click(function () {
+            $("#form-" + $(this).data("id")).submit();
+            return false;
+        });
+    </script>
+}
