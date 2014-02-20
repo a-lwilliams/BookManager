@@ -4,12 +4,8 @@ body {
 	font-family: 'Duru Sans', sans-serif;
 	background-image: url('../img/bg.png'); //relative to SCSS root
 	-webkit-font-smoothing: antialiased;
-	 text-shadow: 0px 0px 1px rgba(128,128,128,0.01); 
-	 -webkit-text-stroke: 1px transparent;
-}
-
-* {
-	
+	text-shadow: 0px 0px 1px rgba(128,128,128,0.01); 
+	-webkit-text-stroke: 1px transparent;
 }
 
 html {
@@ -54,7 +50,7 @@ html {
 }
 
 #image-feature {
-    background-image: url('../img/books.jpg');
+	background-image: url('../img/books.jpg');
 	width: 100%;
 	height: 419px;
 
@@ -85,12 +81,12 @@ html {
 }
 
 .feature-block > h4 {
-    text-align: center;
+	text-align: center;
 	text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.1);
 }
 
 #content {
-    margin-top: 3.6em;
+	margin-top: 3.6em;
 }
 
 .get-started {
